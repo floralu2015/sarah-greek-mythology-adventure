@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sarah's Greek Mythology Homework Adventure</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Trebuchet MS","Avenir Next","Segoe UI",sans-serif;
+  color:#25324a;
+  background:
+    radial-gradient(circle at 10% 5%,#ffeaf4 0 8%,transparent 9%),
+    linear-gradient(135deg,#fffaf4,#effbff);
+  line-height:1.5;
+}
+.page{max-width:1180px;margin:auto;padding:34px 18px 70px}
+.hero{
+  background:linear-gradient(135deg,#5848e8,#ff6fa9 70%,#ffb65c);
+  color:white;
+  border-radius:30px;
+  padding:34px;
+  box-shadow:0 18px 42px #58488e30;
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"🏛️";
+  position:absolute;
+  right:30px;
+  top:20px;
+  font-size:86px;
+  opacity:.14;
+}
+.eyebrow{
+  display:inline-block;
+  padding:7px 11px;
+  border:1px solid #ffffff70;
+  border-radius:999px;
+  background:#ffffff1c;
+  font-weight:900;
+  letter-spacing:0;
+  text-transform:none;
+  font-size:13px;
+}
+.hero h1{
+  font-size:clamp(36px,6vw,62px);
+  margin:10px 0 10px;
+  line-height:1;
+}
+.hero p{font-size:18px;max-width:920px;margin:0}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.hero-tag{
+  display:inline-block;
+  padding:7px 11px;
+  border:1px solid #ffffff70;
+  border-radius:999px;
+  background:#ffffff1c;
+  font-weight:900;
+  font-size:13px;
+}
+.toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+  margin:22px 0;
+  background:#ffffffed;
+  border-radius:20px;
+  padding:13px 15px;
+  box-shadow:0 10px 28px #52627a18;
+  position:sticky;
+  top:10px;
+  z-index:5;
+}
+.navlinks{display:flex;flex-wrap:wrap;gap:8px}
+.navlinks a,.toolbtn{
+  text-decoration:none;
+  border:0;
+  background:#f0ebff;
+  color:#5c43c2;
+  padding:9px 14px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:900;
+  cursor:pointer;
+}
+.toolbtn.primary{background:#6246d9;color:white}
+.section{
+  background:#ffffffed;
+  border-radius:26px;
+  padding:25px;
+  margin:22px 0;
+  box-shadow:0 10px 28px #52627a18;
+}
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:12px;
+}
+.kicker{
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-weight:900;
+  color:#6b4cf6;
+}
+h2{font-size:30px;margin:5px 0 12px}
+.section-sub{color:#667085;font-size:14px;font-weight:700}
+.progress-wrap{
+  margin:0;
+  background:#eef6ff;
+  border:2px solid #cfe4ff;
+  border-radius:16px;
+  padding:12px 16px;
+  font-weight:900;
+  box-shadow:none;
+}
+.progress-top{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:center;
+  margin-bottom:9px;
+  font-weight:900;
+}
+.progress-bar{
+  height:11px;
+  background:#dbe9f7;
+  border-radius:999px;
+  overflow:hidden;
+}
+.progress-fill{
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg,#5848e8,#ff6fa9,#ffb65c);
+  transition:width .2s ease;
+}
+.practice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.practice-card{
+  background:white;
+  border:2px solid #ece6ff;
+  border-radius:18px;
+  padding:15px;
+  box-shadow:none;
+}
+.practice-card.locked{background:white}
+.meta{
+  font-size:12px;
+  text-transform:uppercase;
+  color:#654bd4;
+  font-weight:900;
+  letter-spacing:0;
+}
+.qtext{
+  font-size:16px;
+  font-weight:850;
+  margin:10px 0;
+  min-height:48px;
+  line-height:1.4;
+}
+.quiz-options{display:flex;flex-direction:column;gap:8px}
+.option{
+  border:2px solid #ded4ff;
+  border-radius:12px;
+  padding:9px 12px;
+  background:white;
+  color:#2b2140;
+  font-weight:800;
+  cursor:pointer;
+  text-align:left;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  width:100%;
+  font-size:15px;
+  transition:.12s ease;
+}
+.option:hover:not(:disabled){transform:translateY(-1px);border-color:#b8a9ea}
+.option:disabled{cursor:default;opacity:.88}
+.letter{
+  background:#eee7ff;
+  color:#5d3bd1;
+  font-weight:900;
+  border-radius:8px;
+  width:22px;
+  height:22px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  flex-shrink:0;
+}
+.option.correct{
+  background:#edfff6;
+  border-color:#2eb67d;
+  color:#1f8a53;
+}
+.option.correct .letter{background:#2eb67d;color:white}
+.option.wrong{
+  background:#fff0f2;
+  border-color:#e0546b;
+  color:#a32634;
+}
+.option.wrong .letter{background:#e0546b;color:white}
+.feedback{
+  display:none;
+  margin-top:8px;
+  font-weight:900;
+  font-size:14px;
+  padding:10px 11px;
+  border-radius:12px;
+}
+.feedback.good{
+  display:block;
+  background:#edfff6;
+  border:1px solid #a5dfc2;
+  color:#1f8a53;
+}
+.feedback.bad{
+  display:block;
+  background:#fff0f2;
+  border:1px solid #f0b3bd;
+  color:#a32634;
+}
+.feedback-title{display:block;margin-bottom:5px}
+.why{color:#475467;font-weight:800}
+.answer-print{display:none;margin-top:10px;font-size:13px;font-weight:900}
+.review-panel{
+  background:linear-gradient(135deg,#fff5c8,#ffeaf4);
+  border:2px solid #ffdc72;
+  padding:17px;
+  border-radius:18px;
+  box-shadow:none;
+}
+.review-list{display:grid;gap:10px;margin-top:12px}
+.review-item{
+  border-left:5px solid #e0546b;
+  background:#fff0f2;
+  border-radius:12px;
+  padding:10px 12px;
+}
+.review-item strong{display:block;margin-bottom:3px}
+.success{border-left-color:#24986a;background:#edfff6}
+.bonus{
+  background:transparent;
+  border:0;
+  padding:0;
+  box-shadow:none;
+}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mini-card{
+  background:white;
+  border:2px solid #e9e2ff;
+  border-radius:20px;
+  padding:18px;
+}
+.mini-card strong{color:#5d3bd1}
+.reset-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.footer{text-align:center;color:#667085;font-size:13px;padding:24px 8px 10px;font-weight:700}
+
+@media(max-width:760px){
+  .practice-grid,.two-col{grid-template-columns:1fr}
+  .toolbar{position:static}
+  .section-head{align-items:flex-start;flex-direction:column}
+  .hero:after{display:none}
+}
+@media print{
+  body{background:white}
+  .page{max-width:none;padding:0}
+  .hero{
+    background:white!important;
+    color:black;
+    border:2px solid #bbb;
+    box-shadow:none;
+  }
+  .hero:after,.toolbar,.progress-wrap,.feedback,.review-panel,.footer,.reset-row{display:none!important}
+  .section{box-shadow:none;background:white;padding:12px;margin:12px 0}
+  .practice-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .practice-card{box-shadow:none;break-inside:avoid;border:1px solid #aaa}
+  .option{border:1px solid #aaa!important;background:white!important;color:black!important}
+  .letter{background:white!important;color:black!important;border:1px solid #aaa}
+  body.print-answers .answer-print{display:block}
+  body.print-answers .correct{font-weight:900}
+}
+</style>
+
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div style="font-size:40px;margin-bottom:8px">⚡🌊🦉🎵🏛️✨</div><div class="eyebrow">Greek Mythology • Sarah's School</div>
+    <h1>🏛️ Sarah's Greek Mythology Homework Adventure</h1>
+    <p>Practice the 12 Olympians, Hades, Pan, and the four myths you learned. Choose A, B, C, or D. Each question explains the answer after you respond.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">12 Greek Gods & Goddesses</span>
+      <span class="hero-tag">Hades + Pan</span>
+      <span class="hero-tag">Apollo & Daphne</span>
+      <span class="hero-tag">Echo & Narcissus</span>
+      <span class="hero-tag">Orpheus & Eurydice</span>
+      <span class="hero-tag">Pygmalion & Galatea</span>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="navlinks">
+      <a href="#quiz">Quiz</a>
+      <a href="#review">Words to Review</a>
+      <a href="#bonus">Myth Map</a>
+    </div>
+    <div class="navlinks">
+      <button class="toolbtn" onclick="shuffleQuiz()">🔀 Shuffle</button>
+      <button class="toolbtn" onclick="printWorksheet(false)">🖨️ Worksheet</button>
+      <button class="toolbtn" onclick="printWorksheet(true)">✅ Answer Key</button>
+      <button class="toolbtn primary" onclick="resetQuiz()">Reset Quiz</button>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="progress-wrap">
+      <div class="progress-top">
+        <span id="progressText">0 / 20 answered · 0 correct</span>
+        <span id="percentText">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Practice Quiz</div>
+        <h2>Greek Mythology Multiple Choice</h2>
+      </div>
+      <div class="section-sub">One try per question • explanations appear after you answer</div>
+    </div>
+    <div class="practice-grid" id="quizGrid"></div>
+  </section>
+
+  <section class="section" id="review">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Growth Spot</div>
+        <h2>Questions to Review</h2>
+      </div>
+      <div class="section-sub">Missed questions will appear here automatically.</div>
+    </div>
+    <div class="review-panel">
+      <div id="reviewSummary">Answer some questions first. Your review list will build as you go.</div>
+      <div class="review-list" id="reviewList"></div>
+      <div class="reset-row">
+        <button class="toolbtn primary" onclick="resetQuiz()">Start Fresh</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="bonus">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Quick Reference</div>
+        <h2>Myth Map</h2>
+      </div>
+      <div class="section-sub">A fast study guide for Sarah before or after the quiz.</div>
+    </div>
+
+    <div class="bonus two-col">
+      <div class="mini-card"><strong>Zeus</strong><br>King of the gods; sky, thunder, and lightning.</div>
+      <div class="mini-card"><strong>Hera</strong><br>Queen of the gods; marriage and family.</div>
+      <div class="mini-card"><strong>Poseidon</strong><br>God of the sea; trident.</div>
+      <div class="mini-card"><strong>Demeter</strong><br>Goddess of agriculture and harvest.</div>
+      <div class="mini-card"><strong>Athena</strong><br>Goddess of wisdom and strategic warfare.</div>
+      <div class="mini-card"><strong>Apollo</strong><br>God associated with music, prophecy, healing, and the sun.</div>
+      <div class="mini-card"><strong>Artemis</strong><br>Goddess of the hunt and wilderness.</div>
+      <div class="mini-card"><strong>Ares</strong><br>God of war.</div>
+      <div class="mini-card"><strong>Aphrodite</strong><br>Goddess of love and beauty.</div>
+      <div class="mini-card"><strong>Hephaestus</strong><br>God of fire, metalworking, and craftsmanship.</div>
+      <div class="mini-card"><strong>Hermes</strong><br>Messenger of the gods; travel and trade.</div>
+      <div class="mini-card"><strong>Dionysus</strong><br>God of wine, theater, and celebration.</div>
+      <div class="mini-card"><strong>Hades</strong><br>Ruler of the Underworld.</div>
+      <div class="mini-card"><strong>Pan</strong><br>Nature god connected with shepherds and the wild.</div>
+    </div>
+  </section>
+
+  <div class="footer">Sarah, use the explanations to learn from every answer. 🌿</div>
+</div>
+
+<script>
+const baseQuestions = [
+  {
+    topic:"Olympians",
+    q:"Who is the king of the Greek gods and ruler of Mount Olympus?",
+    choices:["Zeus","Poseidon","Apollo","Hermes"],
+    answer:0,
+    why:"Zeus is the king of the gods. He rules Mount Olympus and is strongly associated with the sky, thunder, lightning, and the thunderbolt."
+  },
+  {
+    topic:"Olympians",
+    q:"Which goddess is best known for wisdom and strategic warfare?",
+    choices:["Aphrodite","Demeter","Athena","Artemis"],
+    answer:2,
+    why:"Athena is the goddess of wisdom and strategic warfare. Unlike Ares, who represents the violent side of war, Athena is associated with planning, intelligence, and strategy."
+  },
+  {
+    topic:"Olympians",
+    q:"Which god rules the sea and is often shown carrying a trident?",
+    choices:["Ares","Poseidon","Hephaestus","Dionysus"],
+    answer:1,
+    why:"Poseidon is the god of the sea. His most famous symbol is the trident, a three-pronged spear."
+  },
+  {
+    topic:"Olympians",
+    q:"Which goddess is connected with marriage and is queen of the gods?",
+    choices:["Hera","Athena","Artemis","Demeter"],
+    answer:0,
+    why:"Hera is queen of the gods and the wife of Zeus. She is especially associated with marriage and family."
+  },
+  {
+    topic:"Olympians",
+    q:"Which god is the messenger of the gods?",
+    choices:["Apollo","Hermes","Ares","Hephaestus"],
+    answer:1,
+    why:"Hermes is the messenger of the gods. He is often pictured with winged sandals and is also connected with travel and trade."
+  },
+  {
+    topic:"Olympians",
+    q:"Which goddess is especially connected with the hunt and wilderness?",
+    choices:["Artemis","Aphrodite","Hera","Demeter"],
+    answer:0,
+    why:"Artemis is the goddess of the hunt and wilderness. She is commonly shown with a bow and arrows."
+  },
+  {
+    topic:"Olympians",
+    q:"Which goddess is associated with love and beauty?",
+    choices:["Athena","Aphrodite","Hera","Artemis"],
+    answer:1,
+    why:"Aphrodite is the goddess of love and beauty."
+  },
+  {
+    topic:"Olympians",
+    q:"Which god is especially associated with fire, metalworking, and craftsmanship?",
+    choices:["Hephaestus","Hermes","Poseidon","Ares"],
+    answer:0,
+    why:"Hephaestus is the divine craftsman and blacksmith of the gods. He is associated with fire, metalworking, and making extraordinary objects."
+  },
+  {
+    topic:"Olympians",
+    q:"Which god is known as the god of war?",
+    choices:["Dionysus","Apollo","Ares","Hermes"],
+    answer:2,
+    why:"Ares is the god of war and is especially associated with the fierce and violent side of battle."
+  },
+  {
+    topic:"Olympians",
+    q:"Which goddess is associated with agriculture and the harvest?",
+    choices:["Demeter","Hera","Aphrodite","Athena"],
+    answer:0,
+    why:"Demeter is the goddess of agriculture and the harvest. She is connected with crops and the fertility of the earth."
+  },
+  {
+    topic:"Olympians",
+    q:"Which god is associated with wine, theater, and celebration?",
+    choices:["Apollo","Dionysus","Hephaestus","Poseidon"],
+    answer:1,
+    why:"Dionysus is the god of wine, theater, and celebration."
+  },
+  {
+    topic:"Olympians",
+    q:"Which god is famous for music and prophecy and is also associated with healing and the sun?",
+    choices:["Apollo","Ares","Hermes","Dionysus"],
+    answer:0,
+    why:"Apollo is strongly associated with music, prophecy, healing, and the sun. He is often shown with a lyre."
+  },
+  {
+    topic:"Hades + Pan",
+    q:"Hades is best known as the ruler of which place?",
+    choices:["Mount Olympus","The Underworld","The sea","The forests"],
+    answer:1,
+    why:"Hades rules the Underworld, the realm of the dead in Greek mythology. He is not usually counted among the 12 Olympians because his kingdom is below the earth."
+  },
+  {
+    topic:"Hades + Pan",
+    q:"Pan is commonly shown with which animal-like features?",
+    choices:["Goat legs and horns","Eagle wings","A horse's body","Fish fins"],
+    answer:0,
+    why:"Pan is usually shown with goat legs, hooves, and horns. He is a nature god connected with shepherds, flocks, mountains, and the wild."
+  },
+  {
+    topic:"Apollo and Daphne",
+    q:"What happens to Daphne when she is trying to escape Apollo?",
+    choices:["She becomes a star","She becomes a laurel tree","She becomes a river","She becomes a swan"],
+    answer:1,
+    why:"Daphne is transformed into a laurel tree. Afterward, Apollo treats the laurel as sacred, which is why the laurel becomes an important symbol connected with him."
+  },
+  {
+    topic:"Echo and Narcissus",
+    q:"What is unusual about Echo after she is punished?",
+    choices:["She can only repeat the words of others","She can read minds","She becomes invisible","She cannot hear music"],
+    answer:0,
+    why:"Echo loses the ability to speak freely and can only repeat words spoken by someone else. This is the origin of the word echo for a repeated sound."
+  },
+  {
+    topic:"Echo and Narcissus",
+    q:"What causes Narcissus's downfall?",
+    choices:["He becomes obsessed with his own reflection","He loses a battle with Ares","He angers Poseidon","He follows Pan into a forest"],
+    answer:0,
+    why:"Narcissus becomes completely fascinated by his own reflection. His inability to turn away from it leads to his downfall."
+  },
+  {
+    topic:"Orpheus and Eurydice",
+    q:"What special talent helps Orpheus move even the rulers of the Underworld?",
+    choices:["Sword fighting","Painting","Music","Running"],
+    answer:2,
+    why:"Orpheus is an extraordinary musician and singer. His music is so beautiful that it moves gods, humans, and even the rulers of the Underworld."
+  },
+  {
+    topic:"Orpheus and Eurydice",
+    q:"What important rule must Orpheus follow while leading Eurydice out of the Underworld?",
+    choices:["He must not speak","He must not look back at her","He must leave his instrument behind","He must walk alone for a year"],
+    answer:1,
+    why:"Orpheus is told that he may lead Eurydice back to the living world only if he does not look back at her before they have completely left the Underworld."
+  },
+  {
+    topic:"Pygmalion and Galatea",
+    q:"What happens to the beautiful statue Pygmalion loves?",
+    choices:["It turns into a tree","It disappears into the sea","It becomes a living woman","It becomes a temple"],
+    answer:2,
+    why:"In the familiar version of the myth, the statue Pygmalion loves is brought to life and becomes Galatea."
+  }
+];
+
+let questions = [...baseQuestions];
+let state = {};
+
+function esc(s){
+  return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+}
+
+function renderQuiz(){
+  const grid = document.getElementById("quizGrid");
+  grid.innerHTML = "";
+
+  questions.forEach((item, idx) => {
+    const card = document.createElement("article");
+    card.className = "practice-card";
+    card.dataset.id = item.q;
+
+    let choicesHTML = "";
+    item.choices.forEach((choice, cidx) => {
+      const letter = ["A","B","C","D"][cidx];
+      choicesHTML += `
+        <button class="option" data-choice="${cidx}" onclick="answerQuestion(${idx},${cidx},this)">
+          <span class="letter">${letter}</span>
+          <span>${esc(choice)}</span>
+        </button>`;
+    });
+
+    card.innerHTML = `
+      <div class="meta">Question ${idx+1} • ${esc(item.topic)}</div>
+      <div class="qtext">${esc(item.q)}</div>
+      <div class="quiz-options">${choicesHTML}</div>
+      <div class="feedback" id="feedback-${idx}">
+        <span class="feedback-title"></span>
+        <div class="why"></div>
+      </div>
+      <div class="answer-print">✓ Answer: ${["A","B","C","D"][item.answer]}. ${esc(item.choices[item.answer])} — ${esc(item.why)}</div>
+    `;
+    grid.appendChild(card);
+
+    if(state[item.q]) restoreCard(card, idx, state[item.q]);
+  });
+
+  updateProgress();
+  updateReview();
+}
+
+function answerQuestion(qidx, choiceIdx, btn){
+  const item = questions[qidx];
+  if(state[item.q]) return;
+
+  const isRight = choiceIdx === item.answer;
+  state[item.q] = {choice:choiceIdx, right:isRight};
+  localStorage.setItem("sarahGreekMythQuizState", JSON.stringify(state));
+
+  const card = btn.closest(".practice-card");
+  const options = [...card.querySelectorAll(".option")];
+  options.forEach((b,i)=>{
+    b.disabled = true;
+    if(i === item.answer) b.classList.add("correct");
+    if(i === choiceIdx && !isRight) b.classList.add("wrong");
+  });
+
+  card.classList.add("locked");
+  const feedback = card.querySelector(".feedback");
+  feedback.classList.add(isRight ? "good" : "bad");
+  feedback.querySelector(".feedback-title").textContent =
+    isRight ? "✅ Correct!" : `❌ Not quite — the answer is ${["A","B","C","D"][item.answer]}. ${item.choices[item.answer]}`;
+  feedback.querySelector(".why").textContent = item.why;
+
+  updateProgress();
+  updateReview();
+}
+
+function restoreCard(card, idx, saved){
+  const item = questions[idx];
+  const options = [...card.querySelectorAll(".option")];
+  options.forEach((b,i)=>{
+    b.disabled = true;
+    if(i === item.answer) b.classList.add("correct");
+    if(i === saved.choice && !saved.right) b.classList.add("wrong");
+  });
+  card.classList.add("locked");
+  const feedback = card.querySelector(".feedback");
+  feedback.classList.add(saved.right ? "good" : "bad");
+  feedback.querySelector(".feedback-title").textContent =
+    saved.right ? "✅ Correct!" : `❌ Not quite — the answer is ${["A","B","C","D"][item.answer]}. ${item.choices[item.answer]}`;
+  feedback.querySelector(".why").textContent = item.why;
+}
+
+function updateProgress(){
+  const vals = Object.values(state);
+  const answered = vals.length;
+  const right = vals.filter(x=>x.right).length;
+  const pct = Math.round((answered/questions.length)*100);
+
+  document.getElementById("progressText").textContent =
+    `${answered} / ${questions.length} answered · ${right} correct`;
+  document.getElementById("percentText").textContent = `${pct}%`;
+  document.getElementById("progressFill").style.width = `${pct}%`;
+}
+
+function updateReview(){
+  const list = document.getElementById("reviewList");
+  const summary = document.getElementById("reviewSummary");
+  list.innerHTML = "";
+
+  const missed = questions.filter(q => state[q.q] && !state[q.q].right);
+  const answered = Object.keys(state).length;
+
+  if(answered === 0){
+    summary.textContent = "Answer some questions first. Your review list will build as you go.";
+    return;
+  }
+
+  if(missed.length === 0){
+    summary.textContent = "Great work! You currently have no missed questions.";
+    const div = document.createElement("div");
+    div.className = "review-item success";
+    div.innerHTML = "<strong>🌟 Strong so far!</strong>Keep going and use the explanations to lock in the details.";
+    list.appendChild(div);
+    return;
+  }
+
+  summary.textContent = `${missed.length} question${missed.length===1?"":"s"} to review:`;
+  missed.forEach(item=>{
+    const div = document.createElement("div");
+    div.className = "review-item";
+    div.innerHTML = `<strong>${esc(item.topic)}: ${esc(item.q)}</strong>${esc(item.why)}`;
+    list.appendChild(div);
+  });
+}
+
+function resetQuiz(){
+  if(!confirm("Reset all answers and start the quiz again?")) return;
+  state = {};
+  localStorage.removeItem("sarahGreekMythQuizState");
+  renderQuiz();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function shuffleQuiz(){
+  questions = [...baseQuestions].sort(()=>Math.random()-.5);
+  state = {};
+  localStorage.removeItem("sarahGreekMythQuizState");
+  renderQuiz();
+  window.scrollTo({top:document.getElementById("quiz").offsetTop-20,behavior:"smooth"});
+}
+
+function printWorksheet(withAnswers){
+  document.body.classList.toggle("print-answers", withAnswers);
+  setTimeout(()=>window.print(),80);
+}
+
+try{
+  state = JSON.parse(localStorage.getItem("sarahGreekMythQuizState") || "{}");
+}catch(e){
+  state = {};
+}
+
+renderQuiz();
+</script>
+</body>
+</html>
