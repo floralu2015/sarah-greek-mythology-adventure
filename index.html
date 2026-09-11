@@ -298,9 +298,9 @@ h2{font-size:30px;margin:5px 0 12px}
   <header class="hero">
     <div style="font-size:40px;margin-bottom:8px">⚡🌊🦉🎵🏛️✨</div><div class="eyebrow">Greek Mythology • Sarah's School</div>
     <h1>🏛️ Sarah's Greek Mythology Homework Adventure</h1>
-    <p>Practice the 12 Olympians, Hades, Pan, and the four myths you learned. Choose A, B, C, or D. Each question explains the answer after you respond.</p>
+    <p>Practice the 12 Olympians, their Roman names, Hades, Pan, and the four myths you learned. Choose A, B, C, or D. Each question explains the answer after you respond.</p>
     <div class="hero-tags">
-      <span class="hero-tag">12 Greek Gods & Goddesses</span>
+      <span class="hero-tag">12 Greek Gods & Goddesses</span><span class="hero-tag">Greek ↔ Roman Names</span>
       <span class="hero-tag">Hades + Pan</span>
       <span class="hero-tag">Apollo & Daphne</span>
       <span class="hero-tag">Echo & Narcissus</span>
@@ -339,9 +339,9 @@ h2{font-size:30px;margin:5px 0 12px}
     <div class="section-head">
       <div>
         <div class="kicker">Practice Quiz</div>
-        <h2>Greek Mythology Multiple Choice</h2>
+        <h2>Greek Mythology + Roman Names Multiple Choice</h2>
       </div>
-      <div class="section-sub">One try per question • explanations appear after you answer</div>
+      <div class="section-sub">One try per question • explanations appear after you answer • includes Greek ↔ Roman names</div>
     </div>
     <div class="practice-grid" id="quizGrid"></div>
   </section>
@@ -369,23 +369,23 @@ h2{font-size:30px;margin:5px 0 12px}
         <div class="kicker">Quick Reference</div>
         <h2>Myth Map</h2>
       </div>
-      <div class="section-sub">A fast study guide for Sarah before or after the quiz.</div>
+      <div class="section-sub">A fast study guide for Sarah, including the Roman names she studied.</div>
     </div>
 
     <div class="bonus two-col">
-      <div class="mini-card"><strong>Zeus</strong><br>King of the gods; sky, thunder, and lightning.</div>
-      <div class="mini-card"><strong>Hera</strong><br>Queen of the gods; marriage and family.</div>
-      <div class="mini-card"><strong>Poseidon</strong><br>God of the sea; trident.</div>
-      <div class="mini-card"><strong>Demeter</strong><br>Goddess of agriculture and harvest.</div>
-      <div class="mini-card"><strong>Athena</strong><br>Goddess of wisdom and strategic warfare.</div>
-      <div class="mini-card"><strong>Apollo</strong><br>God associated with music, prophecy, healing, and the sun.</div>
-      <div class="mini-card"><strong>Artemis</strong><br>Goddess of the hunt and wilderness.</div>
-      <div class="mini-card"><strong>Ares</strong><br>God of war.</div>
-      <div class="mini-card"><strong>Aphrodite</strong><br>Goddess of love and beauty.</div>
-      <div class="mini-card"><strong>Hephaestus</strong><br>God of fire, metalworking, and craftsmanship.</div>
-      <div class="mini-card"><strong>Hermes</strong><br>Messenger of the gods; travel and trade.</div>
-      <div class="mini-card"><strong>Dionysus</strong><br>God of wine, theater, and celebration.</div>
-      <div class="mini-card"><strong>Hades</strong><br>Ruler of the Underworld.</div>
+      <div class="mini-card"><strong>Zeus → Jupiter</strong><br>King of the gods; sky, thunder, and lightning.</div>
+      <div class="mini-card"><strong>Hera → Juno</strong><br>Queen of the gods; marriage and family.</div>
+      <div class="mini-card"><strong>Poseidon → Neptune</strong><br>God of the sea; trident.</div>
+      <div class="mini-card"><strong>Demeter → Ceres</strong><br>Goddess of agriculture and harvest.</div>
+      <div class="mini-card"><strong>Athena → Minerva</strong><br>Goddess of wisdom and strategic warfare.</div>
+      <div class="mini-card"><strong>Apollo → Apollo</strong><br>God associated with music, prophecy, healing, and the sun. His Roman name is also Apollo.</div>
+      <div class="mini-card"><strong>Artemis → Diana</strong><br>Goddess of the hunt and wilderness.</div>
+      <div class="mini-card"><strong>Ares → Mars</strong><br>God of war.</div>
+      <div class="mini-card"><strong>Aphrodite → Venus</strong><br>Goddess of love and beauty.</div>
+      <div class="mini-card"><strong>Hephaestus → Vulcan</strong><br>God of fire, metalworking, and craftsmanship.</div>
+      <div class="mini-card"><strong>Hermes → Mercury</strong><br>Messenger of the gods; travel and trade.</div>
+      <div class="mini-card"><strong>Dionysus → Bacchus</strong><br>God of wine, theater, and celebration.</div>
+      <div class="mini-card"><strong>Hades → Pluto</strong><br>Ruler of the Underworld.</div>
       <div class="mini-card"><strong>Pan</strong><br>Nature god connected with shepherds and the wild.</div>
     </div>
   </section>
@@ -535,6 +535,78 @@ const baseQuestions = [
     answer:2,
     why:"In the familiar version of the myth, the statue Pygmalion loves is brought to life and becomes Galatea."
   }
+  ,
+  {
+    topic:"Greek ↔ Roman Names",
+    q:"What is the Roman name for Zeus?",
+    choices:["Mars","Jupiter","Neptune","Mercury"],
+    answer:1,
+    why:"The Romans called Zeus Jupiter. Zeus and Jupiter are both the king of the gods and are associated with the sky and thunder."
+  },
+  {
+    topic:"Greek ↔ Roman Names",
+    q:"Which Greek goddess is called Juno in Roman mythology?",
+    choices:["Hera","Athena","Artemis","Demeter"],
+    answer:0,
+    why:"Juno is the Roman name for Hera, queen of the gods and goddess of marriage."
+  },
+  {
+    topic:"Greek ↔ Roman Names",
+    q:"What is the Roman name for Poseidon?",
+    choices:["Vulcan","Bacchus","Neptune","Pluto"],
+    answer:2,
+    why:"The Romans called Poseidon Neptune. Both are gods of the sea and are commonly shown with a trident."
+  },
+  {
+    topic:"Greek ↔ Roman Names",
+    q:"Which Greek goddess is called Minerva in Roman mythology?",
+    choices:["Athena","Aphrodite","Hera","Artemis"],
+    answer:0,
+    why:"Minerva is the Roman name for Athena, the goddess of wisdom and strategic warfare."
+  },
+  {
+    topic:"Greek ↔ Roman Names",
+    q:"Which Roman god matches the Greek god Ares?",
+    choices:["Mercury","Mars","Jupiter","Apollo"],
+    answer:1,
+    why:"Mars is the Roman counterpart of Ares. Both are gods of war."
+  },
+  {
+    topic:"Greek ↔ Roman Names",
+    q:"Which Greek goddess is called Venus in Roman mythology?",
+    choices:["Demeter","Athena","Aphrodite","Hera"],
+    answer:2,
+    why:"Venus is the Roman name for Aphrodite, the goddess of love and beauty."
+  },
+  {
+    topic:"Greek ↔ Roman Names",
+    q:"What is the Roman name for Hermes?",
+    choices:["Mercury","Mars","Vulcan","Neptune"],
+    answer:0,
+    why:"The Romans called Hermes Mercury. Both are messengers of the gods and are connected with travel and trade."
+  },
+  {
+    topic:"Greek ↔ Roman Names",
+    q:"Which Greek goddess is called Diana in Roman mythology?",
+    choices:["Hera","Demeter","Artemis","Aphrodite"],
+    answer:2,
+    why:"Diana is the Roman name for Artemis, the goddess of the hunt and wilderness."
+  },
+  {
+    topic:"Greek ↔ Roman Names",
+    q:"What is the Roman name for Hephaestus?",
+    choices:["Vulcan","Pluto","Bacchus","Mercury"],
+    answer:0,
+    why:"Vulcan is the Roman counterpart of Hephaestus, the god of fire, metalworking, and craftsmanship."
+  },
+  {
+    topic:"Greek ↔ Roman Names",
+    q:"Which Olympian keeps the same name in Greek and Roman mythology?",
+    choices:["Apollo","Hermes","Ares","Poseidon"],
+    answer:0,
+    why:"Apollo is unusual because the Romans also called him Apollo. His name stayed the same in both Greek and Roman mythology."
+  }
+
 ];
 
 let questions = [...baseQuestions];
